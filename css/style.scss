@@ -1,0 +1,157 @@
+@import 'compass';
+@import 'mixin';
+@import url(https://fonts.googleapis.com/css?family=Abel);
+
+// font-family
+$baseFontFamily: '游ゴシック', YuGothic, 'メイリオ', Verdana, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+
+// colors
+$baseColor: lighten(#f4d800, 30%);
+$subColor: #0079f7;
+$keyColor: #f4d800;
+$fontColor: #4c4c4c;
+$fontSubColor: #ffffff;
+
+
+@include keyframes(fadeinAnime){
+  0% {
+    opacity:0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity:1;
+    transform: translateX(0);
+  }
+}
+
+/* Base
+---------------------------------------------------------------------- */
+html {
+  font-size: 62.5%;
+}
+
+body {
+  @include gradient(white, $baseColor, vertical);
+  color: $fontColor;
+  font-size: 1.4rem;
+  font-family: $baseFontFamily;
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+  position: relative;
+  &:after {
+    @include animation(fadeinAnime 1.2s ease 0.15s); 
+    background: linear-gradient(-45deg, rgba(255, 255, 255, 0) 60%, #fff 100%);
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+  }
+}
+
+a {
+  @include link-colors($subColor, darken($subColor, 10%), lighten($subColor, 5%), darken($subColor, 10%));
+  text-decoration: none;
+}
+
+strong {
+  font-weight: bold;
+}
+
+
+/* Header
+---------------------------------------------------------------------- */
+header {
+  background: no-repeat center url("../images/header_big.jpg");
+  height: 500px;
+  h1 {
+    display: none;
+  }
+}
+
+
+/* Contents
+---------------------------------------------------------------------- */
+main {
+  h2 {
+    text-shadow: 2px 2px 2px $keyColor;
+    font-size: 4.0rem;
+    margin: 30px 0;
+    text-align: center;
+  }
+  ul {
+    @include clearfix;
+    display: block;
+    max-width: 770px;
+    margin: 30px auto;
+    li {
+      @include box_shadow(5px 5px 10px);
+      display: block;
+      margin: 0 1.6% 10px;
+      max-width: 300px;
+      width: 30%;
+      float: left;
+      h4 {
+        border-radius: 5px 5px 0 0;
+        background: $keyColor;
+        font-size: 1.5rem;
+        line-height: 30px;
+        text-align: center;
+      }
+      p {
+        border-radius: 0 0 5px 5px;
+        background: $subColor;
+        color: $fontSubColor;
+        min-height: 60px;
+        padding: 1rem 2rem;
+      }
+    }
+  }
+}
+
+
+/* Footer
+---------------------------------------------------------------------- */
+footer {
+  background: $subColor;
+  color: $fontSubColor;
+  text-align: center;
+  padding: 20px;
+  a {
+    @include gradient(lighten($keyColor, 40%), $keyColor, vertical);
+    @include box_shadow(5px 5px 5px);
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+    border-radius: 10px;
+    display: inline-block;
+    min-width: 150px;
+    &:hover {
+      @include gradient(darken($keyColor, 10%), $keyColor, vertical);
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+  /* Header
+  ---------------------------------------------------------------------- */
+  header {
+    background: no-repeat center url("../images/header_small.jpg") $subColor;
+    height: 250px;
+  }
+
+  /* Content
+  ---------------------------------------------------------------------- */
+  main {
+    ul {
+      li {
+        max-width: 300px;
+        width: 90%;
+        float: none;
+        margin: 30px auto;
+      }
+    }
+  }
+}
