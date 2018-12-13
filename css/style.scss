@@ -88,7 +88,8 @@ main {
     max-width: 770px;
     margin: 30px auto;
     li {
-      @include box_shadow(5px 5px 10px);
+      @include box_shadow(5px 5px 10px $fontColor);
+      border-radius: 5px;
       display: block;
       margin: 0 1.6% 10px;
       max-width: 300px;
@@ -122,7 +123,7 @@ footer {
   padding: 20px;
   a {
     @include gradient(lighten($keyColor, 40%), $keyColor, vertical);
-    @include box_shadow(5px 5px 5px);
+    @include box_shadow(5px 5px 5px $fontColor);
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
     border-radius: 10px;
     display: inline-block;
